@@ -13,48 +13,48 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demospringfirestore.dto.PersonaDTO;
+import com.example.demospringfirestore.dto.OvenDTO;
 import com.example.demospringfirestore.model.Oven;
-import com.example.demospringfirestore.service.api.PersonaServiceAPI;
+import com.example.demospringfirestore.service.api.OvenServiceAPI;
 
 @RestController
-@RequestMapping(value = "/persona/api/v1/")
+@RequestMapping(value = "/mychef-api/oven")
 @CrossOrigin("*")
-public class PersonaRestController {
+public class OvenRestController {
 
 	@Autowired
-	private PersonaServiceAPI personaServiceAPI;
+	private OvenServiceAPI ovenServiceAPI;
 
 	@GetMapping(value = "/all")
-	public List<PersonaDTO> getAll() throws Exception {
-		return personaServiceAPI.getAll();
+	public List<OvenDTO> getAll() throws Exception {
+		return ovenServiceAPI.getAll();
 	}
 
 	@GetMapping(value = "/find/{id}")
-	public PersonaDTO find(@PathVariable String id) throws Exception {
-		return personaServiceAPI.get(id);
+	public OvenDTO find(@PathVariable String id) throws Exception {
+		return ovenServiceAPI.get(id);
 	}
 
 	@PostMapping(value = "/save/{id}")
-	public ResponseEntity<String> save(@RequestBody Oven persona, @PathVariable String id) throws Exception {
+	public ResponseEntity<String> save(@RequestBody Oven oven, @PathVariable String id) throws Exception {
 		if (id == null || id.length() == 0 || id.equals("null")) {
-			id = personaServiceAPI.save(persona);
+			id = ovenServiceAPI.save(oven);
 		} else {
-			personaServiceAPI.save(persona, id);
+			ovenServiceAPI.save(oven, id);
 		}
 		return new ResponseEntity<String>(id, HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/delete/{id}")
-	public ResponseEntity<PersonaDTO> delete(@PathVariable String id) throws Exception {
-		PersonaDTO persona = personaServiceAPI.get(id);
-		if (persona != null) {
-			personaServiceAPI.delete(id);
+	public ResponseEntity<OvenDTO> delete(@PathVariable String id) throws Exception {
+		OvenDTO oven = ovenServiceAPI.get(id);
+		if (oven != null) {
+			ovenServiceAPI.delete(id);
 		} else {
-			return new ResponseEntity<PersonaDTO>(HttpStatus.NO_CONTENT);
+			return new ResponseEntity<OvenDTO>(HttpStatus.NO_CONTENT);
 		}
 
-		return new ResponseEntity<PersonaDTO>(persona, HttpStatus.OK);
+		return new ResponseEntity<OvenDTO>(oven, HttpStatus.OK);
 	}
 
 }
