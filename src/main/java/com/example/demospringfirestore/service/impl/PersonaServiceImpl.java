@@ -5,13 +5,13 @@ import org.springframework.stereotype.Service;
 
 import com.example.demospringfirestore.commons.GenericServiceImpl;
 import com.example.demospringfirestore.dto.PersonaDTO;
-import com.example.demospringfirestore.model.Persona;
+import com.example.demospringfirestore.model.Oven;
 import com.example.demospringfirestore.service.api.PersonaServiceAPI;
 import com.google.cloud.firestore.CollectionReference;
 import com.google.cloud.firestore.Firestore;
 
 @Service
-public class PersonaServiceImpl extends GenericServiceImpl<Persona, PersonaDTO> implements PersonaServiceAPI {
+public class PersonaServiceImpl extends GenericServiceImpl<Oven, PersonaDTO> implements PersonaServiceAPI {
 	
 	@Autowired
 	private Firestore firestore;

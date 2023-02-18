@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demospringfirestore.dto.PersonaDTO;
-import com.example.demospringfirestore.model.Persona;
+import com.example.demospringfirestore.model.Oven;
 import com.example.demospringfirestore.service.api.PersonaServiceAPI;
 
 @RestController
@@ -36,7 +36,7 @@ public class PersonaRestController {
 	}
 
 	@PostMapping(value = "/save/{id}")
-	public ResponseEntity<String> save(@RequestBody Persona persona, @PathVariable String id) throws Exception {
+	public ResponseEntity<String> save(@RequestBody Oven persona, @PathVariable String id) throws Exception {
 		if (id == null || id.length() == 0 || id.equals("null")) {
 			id = personaServiceAPI.save(persona);
 		} else {
